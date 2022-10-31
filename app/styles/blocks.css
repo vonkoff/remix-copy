@@ -1,0 +1,144 @@
+/* DEFAULT VARIABLES */
+body {
+  --blocks-text-color: #222;
+  --blocks-background-color: #fff;
+  --blocks-accent-color: #00ae86;
+  --blocks-shadow-color: #444;
+}
+
+/* BASIC BLOCK STYLES */
+.blocks {
+  display: block;
+  border-radius: 3px;
+  padding: 4px 8px;
+  font-weight: bold;
+  cursor: pointer;
+  box-sizing: border-box;
+  position: relative;
+  top: -2px;
+  left: -2px;
+  transition: transform 0.2s;
+  margin: 0px 0px 0px 0px;
+  z-index: 1;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+.blocks.wrapper,
+.blocks.wrapper.inline {
+  display: inline-block;
+  padding: 0;
+}
+
+.blocks.wrapper > * {
+  margin: 0;
+}
+
+/* INTERACTIVE BLOCK STYLES */
+.blocks::before {
+  content: '';
+  border-radius: 3px;
+  box-sizing: border-box;
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  height: calc(100% + 6px);
+  width: calc(100% + 6px);
+  z-index: -1;
+}
+
+.blocks:hover,
+.blocks:focus {
+  transform: translate(2px, 2px);
+}
+
+.blocks::after {
+  content: '';
+  display: block;
+  box-sizing: border-box;
+  border-radius: 3px;
+  height: calc(100% + 6px);
+  width: calc(100% + 6px);
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 0;
+  z-index: -2;
+  transition: transform 0.2s;
+}
+
+.blocks:hover::after,
+.blocks:focus::after {
+  transform: translate(-2px, -3px);
+}
+
+.blocks:active {
+  transform: translate(3px, 3px);
+}
+
+.blocks:active::after {
+  transform: translate(-4px, -4px);
+}
+
+.blocks:focus {
+  outline: none;
+}
+
+.blocks.fixed {
+  cursor: initial !important;
+}
+
+/* FIXED STYLES */
+.blocks.fixed:hover,
+.blocks.fixed:hover::before,
+.blocks.fixed:hover::after,
+.blocks.fixed:active,
+.blocks.fixed:active::before,
+.blocks.fixed:active::after,
+.blocks.fixed:focus,
+.blocks.fixed:focus::before,
+.blocks.fixed:focus::after {
+  transform: none !important;
+}
+
+/* ACCENT STYLES */
+.blocks.accent {
+}
+
+.blocks.accent::before {
+}
+
+/* INLINE STYLES */
+.blocks.inline {
+  display: inline-block;
+  font-size: 0.75em;
+  padding: 0 6px;
+  margin: 3px 2px 1px 4px;
+}
+.blocks.inline::after {
+  top: -1px;
+  left: -1px;
+}
+.blocks.inline:hover,
+.blocks.inline:focus {
+  transform: translate(1px, 1px);
+}
+.blocks.inline:hover::after,
+.blocks.inline:focus::after {
+  transform: translate(-1px, -1px);
+}
+.blocks.inline:active {
+  transform: translate(2px, 2px);
+}
+
+/* ROUND STYLES */
+.blocks.round,
+.blocks.round::before,
+.blocks.round::after {
+  border-radius: 30px;
+}
+
+.blocks.round::after {
+  left: 1px;
+}
